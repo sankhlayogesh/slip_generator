@@ -400,201 +400,246 @@ export default function A4DharmKantaSlip() {
         <div className="card-body">
           <h4 className="text-center mb-3">Slip Generator</h4>
 
-          {/* Use responsive grid: each pair stacks on xs and sits side-by-side on md+ */}
           <form>
-            <div className="row g-2 align-items-center">
-
-              {/* Company Name (label inline) */}
-              <div className="col-12">
-                <div className="row gx-2 align-items-center">
-                  <label className="col-12 col-sm-4 col-form-label small text-sm-end">Company Name</label>
-                  <div className="col-12 col-sm-8">
-                    <input type="text" name="companyName" value={formData.companyName} onChange={handleChange} className="form-control form-control-sm" />
-                  </div>
-                </div>
-              </div>
-
-              {/* Company Address */}
-              <div className="col-12">
-                <div className="row gx-2 align-items-start">
-                  <label className="col-12 col-sm-4 col-form-label small text-sm-end">Company Address</label>
-                  <div className="col-12 col-sm-8">
-                    <textarea name="companyAddress" value={formData.companyAddress} onChange={handleChange} rows={2} className="form-control form-control-sm" />
-                  </div>
-                </div>
-              </div>
-
-              {/* Capacity, Vhl Type, Vehicle No - arranged responsively */}
-              <div className="col-12 col-md-4">
-                <div className="row gx-2 align-items-center">
-                  <label className="col-5 col-form-label small text-end">Capacity (MT)</label>
-                  <div className="col-7">
-                    <input type="text" name="capacity" value={formData.capacity} onChange={handleChange} className="form-control form-control-sm" />
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-12 col-md-4">
-                <div className="row gx-2 align-items-center">
-                  <label className="col-5 col-form-label small text-end">Vhl Type</label>
-                  <div className="col-7">
-                    <input type="text" name="vhlType" value={formData.vhlType} onChange={handleChange} className="form-control form-control-sm" />
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-12 col-md-4">
-                <div className="row gx-2 align-items-center">
-                  <label className="col-5 col-form-label small text-end">Vehicle No</label>
-                  <div className="col-7">
-                    <input type="text" name="vehicleNo" value={formData.vehicleNo} onChange={handleChange} className="form-control form-control-sm" />
-                  </div>
-                </div>
-              </div>
-
-              {/* RST No, Party Name, Item */}
-              <div className="col-12 col-md-4">
-                <div className="row gx-2 align-items-center">
-                  <label className="col-5 col-form-label small text-end">RST No</label>
-                  <div className="col-7">
-                    <input type="text" name="rstNo" value={formData.rstNo} onChange={handleChange} className="form-control form-control-sm" />
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-12 col-md-4">
-                <div className="row gx-2 align-items-center">
-                  <label className="col-5 col-form-label small text-end">Party Name</label>
-                  <div className="col-7">
-                    <input type="text" name="partyName" value={formData.partyName} onChange={handleChange} className="form-control form-control-sm" />
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-12 col-md-4">
-                <div className="row gx-2 align-items-center">
-                  <label className="col-5 col-form-label small text-end">Item</label>
-                  <div className="col-7">
-                    <input type="text" name="item" value={formData.item} onChange={handleChange} className="form-control form-control-sm" />
-                  </div>
-                </div>
-              </div>
-
-              {/* Party Address full width */}
-              <div className="col-12">
-                <div className="row gx-2 align-items-center">
-                  <label className="col-12 col-sm-4 col-form-label small text-sm-end">Party Address</label>
-                  <div className="col-12 col-sm-8">
-                    <input type="text" name="partyAddress" value={formData.partyAddress} onChange={handleChange} className="form-control form-control-sm" />
-                  </div>
-                </div>
-              </div>
-
-              {/* Weights: Gross, Tare, Net */}
-              <div className="col-12 col-md-4">
-                <div className="row gx-2 align-items-center">
-                  <label className="col-5 col-form-label small text-end">Gross (Kg)</label>
-                  <div className="col-7">
-                    <input type="text" name="grossWeight" value={formData.grossWeight} onChange={handleChange} className="form-control form-control-sm" />
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-12 col-md-4">
-                <div className="row gx-2 align-items-center">
-                  <label className="col-5 col-form-label small text-end">Tare (Kg)</label>
-                  <div className="col-7">
-                    <input type="text" name="tareWeight" value={formData.tareWeight} onChange={handleChange} className="form-control form-control-sm" />
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-12 col-md-4">
-                <div className="row gx-2 align-items-center">
-                  <label className="col-5 col-form-label small text-end">Net (Kg)</label>
-                  <div className="col-7">
-                    <input type="text" name="netWeight" value={formData.netWeight} onChange={handleChange} className="form-control form-control-sm" />
-                  </div>
-                </div>
-              </div>
-
-              {/* Date & Time pickers - each takes half on md+ */}
+            {/* Use a consistent two-column grid: each item is col-12 on xs, col-md-6 on md+ */}
+            <div className="row g-3">
               <div className="col-12 col-md-6">
-                <div className="row gx-2 align-items-center">
-                  <label className="col-5 col-form-label small text-end">Gross Date & Time</label>
-                  <div className="col-7">
-                    <DatePicker
-                      selected={formData.grossDateTime}
-                      onChange={(d) => handleDateChange("grossDateTime", d)}
-                      showTimeSelect
-                      dateFormat="dd/MM/yyyy HH:mm:ss"
-                      className="form-control form-control-sm"
-                    />
-                  </div>
-                </div>
+              <label className="form-label text-start small">Company Name</label>
+              <input
+                type="text"
+                name="companyName"
+                value={formData.companyName}
+                onChange={handleChange}
+                className="form-control form-control-sm"
+              />
+            </div>
+          <div className="col-12 col-md-6">
+            <label className="form-label text-start small">Company Address</label>
+            <input
+             type="text"
+              name="companyAddress"
+              value={formData.companyAddress}
+              onChange={handleChange}
+              className="form-control form-control-sm"
+            />
+          </div>
+
+              {/* Capacity (MT) */}
+              <div className="col-12 col-md-4">
+                <label className="form-label text-start small">Capacity (MT)</label>
+                <input
+                  type="text"
+                  name="capacity"
+                  value={formData.capacity}
+                  onChange={handleChange}
+                  className="form-control form-control-sm"
+                />
               </div>
 
+              {/* Vhl Type */}
+              <div className="col-12 col-md-4">
+                <label className="form-label text-start small">Vhl Type</label>
+                <input
+                  type="text"
+                  name="vhlType"
+                  value={formData.vhlType}
+                  onChange={handleChange}
+                  className="form-control form-control-sm"
+                />
+              </div>
+
+              {/* Vehicle No */}
+              <div className="col-12 col-md-4">
+                <label className="form-label text-start small">Vehicle No</label>
+                <input
+                  type="text"
+                  name="vehicleNo"
+                  value={formData.vehicleNo}
+                  onChange={handleChange}
+                  className="form-control form-control-sm"
+                />
+              </div>
+
+              {/* RST No */}
+              <div className="col-12 col-md-4">
+                <label className="form-label text-start small">RST No</label>
+                <input
+                  type="text"
+                  name="rstNo"
+                  value={formData.rstNo}
+                  onChange={handleChange}
+                  className="form-control form-control-sm"
+                />
+              </div>
+
+              {/* Party Name */}
+              <div className="col-12 col-md-4">
+                <label className="form-label text-start small">Party Name</label>
+                <input
+                  type="text"
+                  name="partyName"
+                  value={formData.partyName}
+                  onChange={handleChange}
+                  className="form-control form-control-sm"
+                />
+              </div>
+
+              {/* Item */}
+              <div className="col-12 col-md-4">
+                <label className="form-label text-start small">Item</label>
+                <input
+                  type="text"
+                  name="item"
+                  value={formData.item}
+                  onChange={handleChange}
+                  className="form-control form-control-sm"
+                />
+              </div>
+
+              {/* Party Address - full width */}
+              <div className="col-12">
+                <label className="form-label text-start small">Party Address</label>
+                <input
+                  type="text"
+                  name="partyAddress"
+                  value={formData.partyAddress}
+                  onChange={handleChange}
+                  className="form-control form-control-sm"
+                />
+              </div>
+
+              {/* Gross, Tare, Net - each one third on md+ */}
+              <div className="col-12 col-md-4">
+                <label className="form-label text-start small">Gross (Kg)</label>
+                <input
+                  type="text"
+                  name="grossWeight"
+                  value={formData.grossWeight}
+                  onChange={handleChange}
+                  className="form-control form-control-sm"
+                />
+              </div>
+
+              <div className="col-12 col-md-4">
+                <label className="form-label text-start small">Tare (Kg)</label>
+                <input
+                  type="text"
+                  name="tareWeight"
+                  value={formData.tareWeight}
+                  onChange={handleChange}
+                  className="form-control form-control-sm"
+                />
+              </div>
+
+              <div className="col-12 col-md-4">
+                <label className="form-label text-start small">Net (Kg)</label>
+                <input
+                  type="text"
+                  name="netWeight"
+                  value={formData.netWeight}
+                  onChange={handleChange}
+                  className="form-control form-control-sm"
+                />
+              </div>
+
+              {/* Gross Date & Time */}
               <div className="col-12 col-md-6">
-                <div className="row gx-2 align-items-center">
-                  <label className="col-5 col-form-label small text-end">Tare Date & Time</label>
-                  <div className="col-7">
-                    <DatePicker
-                      selected={formData.tareDateTime}
-                      onChange={(d) => handleDateChange("tareDateTime", d)}
-                      showTimeSelect
-                      dateFormat="dd/MM/yyyy HH:mm:ss"
-                      className="form-control form-control-sm"
-                    />
-                  </div>
-                </div>
+                <label className="form-label text-start small">Gross Date & Time</label>
+                <DatePicker
+                  selected={formData.grossDateTime}
+                  onChange={(d) => handleDateChange("grossDateTime", d)}
+                  showTimeSelect
+                  dateFormat="dd/MM/yyyy HH:mm:ss"
+                  className="form-control form-control-sm"
+                />
               </div>
 
-              {/* Charges and Phones */}
+              {/* Tare Date & Time */}
+              <div className="col-12 col-md-6">
+                <label className="form-label text-start small">Tare Date & Time</label>
+                <DatePicker
+                  selected={formData.tareDateTime}
+                  onChange={(d) => handleDateChange("tareDateTime", d)}
+                  showTimeSelect
+                  dateFormat="dd/MM/yyyy HH:mm:ss"
+                  className="form-control form-control-sm"
+                />
+              </div>
+
+              {/* Charges, Phone1, Phone2 */}
               <div className="col-12 col-md-4">
-                <div className="row gx-2 align-items-center">
-                  <label className="col-5 col-form-label small text-end">Charges (Rs)</label>
-                  <div className="col-7">
-                    <input type="text" name="charges" value={formData.charges} onChange={handleChange} className="form-control form-control-sm" />
-                  </div>
-                </div>
+                <label className="form-label text-start small">Charges (Rs)</label>
+                <input
+                  type="text"
+                  name="charges"
+                  value={formData.charges}
+                  onChange={handleChange}
+                  className="form-control form-control-sm"
+                />
               </div>
 
               <div className="col-12 col-md-4">
-                <div className="row gx-2 align-items-center">
-                  <label className="col-5 col-form-label small text-end">Phone 1</label>
-                  <div className="col-7">
-                    <input type="text" name="phone1" value={formData.phone1} onChange={handleChange} className="form-control form-control-sm" />
-                  </div>
-                </div>
+                <label className="form-label text-start small">Phone 1</label>
+                <input
+                  type="text"
+                  name="phone1"
+                  value={formData.phone1}
+                  onChange={handleChange}
+                  className="form-control form-control-sm"
+                />
               </div>
 
               <div className="col-12 col-md-4">
-                <div className="row gx-2 align-items-center">
-                  <label className="col-5 col-form-label small text-end">Phone 2</label>
-                  <div className="col-7">
-                    <input type="text" name="phone2" value={formData.phone2} onChange={handleChange} className="form-control form-control-sm" />
-                  </div>
-                </div>
+                <label className="form-label text-start small">Phone 2</label>
+                <input
+                  type="text"
+                  name="phone2"
+                  value={formData.phone2}
+                  onChange={handleChange}
+                  className="form-control form-control-sm"
+                />
               </div>
-
             </div>
 
             <div className="d-flex justify-content-center gap-2 mt-3">
-              <Button variant="primary" size="sm" onClick={(e) => { e.preventDefault(); generatePDF(); }}>Generate PDF</Button>
-              <Button variant="secondary" size="sm" onClick={(e) => { e.preventDefault(); printSlip(); }}>Print Slip</Button>
+              <Button
+                variant="primary"
+                size="sm"
+                onClick={(e) => {
+                  e.preventDefault();
+                  generatePDF();
+                }}
+              >
+                Generate PDF
+              </Button>
+              <Button
+                variant="secondary"
+                size="sm"
+                onClick={(e) => {
+                  e.preventDefault();
+                  printSlip();
+                }}
+              >
+                Print Slip
+              </Button>
             </div>
-
           </form>
-
         </div>
       </div>
 
-      {/* small CSS tweaks to keep labels compact on very small screens */}
+      {/* Minor tweaks to keep labels compact on tiny screens */}
       <style>{`
-        @media (max-width: 575.98px) {
-          .col-form-label.text-sm-end { text-align: left !important; margin-bottom: 4px; }
-        }
         .card { border-radius: 8px; }
+        .form-label { display:block; margin-bottom:6px; }
+        @media (max-width: 575.98px) {
+          .form-label.small { font-size: .85rem; }
+        }
+        .react-datepicker-wrapper { width: 100% !important; }
+        .react-datepicker__input-container input {
+          width: 100% !important;
+          box-sizing: border-box;
+        }
+
       `}</style>
     </div>
   );
