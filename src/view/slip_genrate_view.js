@@ -316,8 +316,12 @@ export default function A4DharmKantaSlip() {
 
     // Header
     doc.setFont("courier", "bold");
-    doc.setFontSize(14);
-    doc.text((formData.companyName || "").toUpperCase(), centerX, 15, { align: "center" });
+    doc.setFontSize(16);
+  //   doc.text((formData.companyName || "").toUpperCase(), centerX, 15, {
+  //   align: "center",
+  //   charSpace: 1,    // ⭐ Add character spacing here
+  // });
+    doc.text((formData.companyName || "").toUpperCase(), centerX, 15, { align: "center",});
 
     doc.setFont("courier", "normal");
     doc.setFontSize(10);
