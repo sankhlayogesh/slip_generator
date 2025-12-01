@@ -97,6 +97,47 @@ function TypesExample() {
       document.removeEventListener("visibilitychange", onVis);
     }
   }, []);
+  const openISCAccountifyApp = useCallback(() => {
+    var androidStore = "https://play.google.com/store/apps/details?id=com.isca.accountify";
+      var iosStore = "https://apps.apple.com/in/app/iscaccountify/id6744101857";
+      var appLink = "https://iscaccountify.sg/iscaccountify";
+      var intentUrl =
+      "intent://boardflix.sg/boardflix#Intent;" +
+      "scheme=https;" +
+      "package=com.board.flix;" +
+      "S.browser_fallback_url=" + encodeURIComponent(androidStore) + ";" +
+      "end";
+
+    var isAndroid = /Android/i.test(navigator.userAgent);
+    var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+	
+	var now = Date.now();
+
+    if (isAndroid) {
+        // Try opening app
+        window.location.href = intentUrl;
+
+        // If not installed → fallback
+        setTimeout(function () {
+            if (Date.now() - now < 2000) {
+                window.location.href = androidStore;
+            }
+        }, 1500);
+
+    } else if (isIOS) {
+        // Try opening the app via universal link
+        window.location.href = appLink;
+
+        // Fallback to App Store
+        setTimeout(function () {
+            window.location.href = iosStore;
+        }, 1500);
+
+    } else {
+        // Desktop → just open website
+        window.open("https://boardflix.sg", "_blank");
+    }
+  }, []);
 
   const openBoardflix = useCallback(() => {
     // Another variant that uses visibility detection + universal link fallback
@@ -126,9 +167,9 @@ function TypesExample() {
   
   return (
     <>
-      <Button variant="primary" onClick={openApp}>Primary</Button>
-      <Button variant="secondary"  onClick={openBoardflixApp}>Secondary</Button>
-      <Button variant="success" onClick={openBoardflix}>Success</Button>
+      <Button variant="primary" onClick={openISCAccountifyApp}>open iscaccountify Primary</Button>
+      <Button variant="secondary"  onClick={openBoardflixApp}>open boardflix Secondary</Button>
+      <Button variant="success" onClick={openBoardflix}>open boardflix 1 Success</Button>
       {/* <Button variant="warning">Warning</Button>
       <Button variant="danger">Danger</Button>
       <Button variant="info">Info</Button>
